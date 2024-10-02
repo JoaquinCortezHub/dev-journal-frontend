@@ -11,10 +11,10 @@ const AboutPage = () => {
 		<div className="px-4 sm:px-8 md:px-12">
 			<div className="container mx-auto h-[250px] rounded-2xl">
 				<Image
-					src="/about-page-cover.jpg"
+					src="/cover-pic.jpg"
 					alt="blog banner"
-					width={1200}
-					height={1200}
+					width={2400}
+					height={2400}
 					className="w-full h-full object-cover rounded-2xl"
 				/>
 			</div>
@@ -63,6 +63,12 @@ const AboutPage = () => {
 					</Link>
 				</div>
 			</div>
+			<footer>
+				<a 
+					href="https://unsplash.com/@ricvath"
+				>
+				</a>
+			</footer>
 		</div>
 	);
 };

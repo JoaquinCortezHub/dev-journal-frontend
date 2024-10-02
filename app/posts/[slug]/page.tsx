@@ -69,6 +69,25 @@ const components: PortableTextComponents = {
 			);
 		},
 	},
+	list: {
+		// Custom styles for unordered lists
+		bullet: ({ children }: any) => (
+			<ul className="list-disc ml-5 space-y-2">{children}</ul>
+		),
+		// Custom styles for ordered lists
+		number: ({ children }: any) => (
+			<ol className="list-decimal ml-5 space-y-2">{children}</ol>
+		),
+	},
+	listItem: {
+		// Custom styles for each list item
+		bullet: ({ children }: any) => (
+			<li className="text-slate-700 dark:text-stone-300">{children}</li>
+		),
+		number: ({ children }: any) => (
+			<li className="text-slate-700 dark:text-stone-300">{children}</li>
+		),
+	},
 	block: {
 		blockquote: ({ children }: any) => (
 			<blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">
@@ -90,7 +109,6 @@ const components: PortableTextComponents = {
 		number: ({ children }: any) => (
 			<ol className="list-decimal list-inside my-4">{children}</ol>
 		),
-		
 	},
 };
 
@@ -114,7 +132,7 @@ export default async function PostPage({
 		sources,
 	} = post;
 	const coverImageUrl = coverImage ? urlFor(coverImage)?.url() : null;
-	console.log(sources)
+	console.log(sources);
 
 	return (
 		<div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl mb-16">
@@ -164,12 +182,12 @@ export default async function PostPage({
 				<PortableText value={content} components={components} />
 			</div>
 			<hr />
-			<div className="mt-4 flex justify-between items-center" >
+			<div className="mt-4 flex justify-between items-center">
 				<Link href="/" className={buttonVariants({ variant: "outline" })}>
 					<SquareArrowLeft className="mr-2" />
 					Back to home
 				</Link>
-				<Button variant={'secondary'}>
+				<Button variant={"secondary"}>
 					Random Post
 					<ShuffleIcon className="ml-2" />
 				</Button>
@@ -178,21 +196,26 @@ export default async function PostPage({
 				<footer className="mt-8 text-center text-sm text-gray-600 dark:text-gray-500">
 					<h2 className="text-xl font-semibold mb-4">Sources</h2>
 					<ul className="list-none">
-						{sources.map((source: { title: string, url: string, usage: string }, index: number) => (
-							<li key={index} className="mb-2">
-								<p>
-									<strong>{source.usage}</strong>{" "}
-									<a
-										href={source.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="text-sm text-gray-800 dark:text-gray-300 underline"
-									>
-										{source.title}
-									</a>
-								</p>
-							</li>
-						))}
+						{sources.map(
+							(
+								source: { title: string; url: string; usage: string },
+								index: number
+							) => (
+								<li key={index} className="mb-2">
+									<p>
+										<strong>{source.usage}</strong>{" "}
+										<a
+											href={source.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="text-sm text-gray-800 dark:text-gray-300 underline"
+										>
+											{source.title}
+										</a>
+									</p>
+								</li>
+							)
+						)}
 					</ul>
 				</footer>
 			)}
