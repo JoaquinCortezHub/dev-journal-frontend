@@ -44,7 +44,7 @@ export default async function HomePage() {
         {posts.map((post: Post) => (
           <Link key={post._id} href={`/posts/${post.slug?.current}`} passHref legacyBehavior>
             <a className="block">
-              <Card className="overflow-hidden">
+              <Card className="flex flex-col h-full overflow-hidden">
                 <div className="relative w-full h-48">
                   {post.cover && (
                     <Image
@@ -58,8 +58,8 @@ export default async function HomePage() {
                 <CardHeader>
                   <CardTitle>{post.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-slate-500 dark:text-stone-400">
+                <CardContent className="flex-grow">
+                  <p className="text-sm text-slate-500 dark:text-stone-400 line-clamp-3 overflow-hidden">
                     {post.description}
                   </p>
                 </CardContent>
