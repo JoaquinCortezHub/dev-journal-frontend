@@ -11,7 +11,7 @@ import Link from "next/link";
 const options = { next: { revalidate: 60 } };
 
 const POSTS_QUERY = defineQuery(
-  `*[_type == "post" && defined(slug.current)] {_id, title, slug, publishedAt, author, cover, description, categories, Type}|order(date desc)`
+  `*[_type == "post" && defined(slug.current)] {_id, title, slug, publishedAt, author, cover, description, categories, Type}|order(publishedAtclear desc)`
 );
 
 
